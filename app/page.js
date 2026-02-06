@@ -106,7 +106,66 @@ export default function ValentinePage() {
             >
               {/* Placeholder for couple photos */}
               <div className="w-full h-full flex items-center justify-center text-rose-300/50 text-xs p-2 text-center">
-                Photo {i + 1}
+                <img
+                  src="/public/photos/1.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/2.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/3.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/4.heic"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/5.heic"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/6.heic"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/7.heic"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/8.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/9.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/10.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/11.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                <img
+                  src="/public/photos/12.jpg"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
           ))}
