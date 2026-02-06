@@ -107,62 +107,62 @@ export default function ValentinePage() {
               {/* Placeholder for couple photos */}
               <div className="w-full h-full flex items-center justify-center text-rose-300/50 text-xs p-2 text-center">
                 <img
-                  src="/public/photos/1.jpg"
+                  src="/photos/1.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/2.jpg"
+                  src="/photos/2.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/3.jpg"
+                  src="/photos/3.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/4.heic"
+                  src="/photos/4.heic"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/5.heic"
+                  src="/photos/5.heic"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/6.heic"
+                  src="/photos/6.heic"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/7.heic"
+                  src="/photos/7.heic"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/8.jpg"
+                  src="/photos/8.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/9.jpg"
+                  src="/photos/9.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/10.jpg"
+                  src="/photos/10.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/11.jpg"
+                  src="/photos/11.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
                 <img
-                  src="/public/photos/12.jpg"
+                  src="/photos/12.jpg"
                   alt=""
                   className="w-full h-full object-cover"
                 />
