@@ -1,20 +1,20 @@
 import { Inter, Dancing_Script } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-const dancingScript = Dancing_Script({ 
+const dancingScript = Dancing_Script({
   subsets: ['latin'],
   variable: '--font-dancing',
   display: 'swap',
 })
 
 export const metadata = {
-  title: 'Valentine Week Letters | For You ❤️',
+  title: 'Valentine Week | Letters For You ❤️',
   description: 'A collection of heartfelt letters for Valentine Week',
 }
 
