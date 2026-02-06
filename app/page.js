@@ -86,34 +86,33 @@ export default function ValentinePage() {
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-950 via-purple-950 to-slate-950">
       {/* Animated Background Photo Grid */}
-      {/* Animated Background Photo Grid */}
-      <div className="fixed inset-0 opacity-20">
+      <div className="fixed inset-0 opacity-20 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-4 p-4 h-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 p-2 h-full">
           {[
-            "/photos/1.jpg", "/photos/2.jpg", "/photos/3.jpg",
-            "/photos/4.jpg", "/photos/5.jpg", "/photos/6.jpg",
-            "/photos/7.jpg", "/photos/8.jpg", "/photos/9.jpg",
-            "/photos/10.jpg", "/photos/11.jpg", "/photos/12.jpg"
+            "/photos/1.jpg", "/photos/2.jpg", "/photos/3.jpg", "/photos/4.jpg",
+            "/photos/5.jpg", "/photos/6.jpg", "/photos/7.jpg", "/photos/8.jpg",
+            "/photos/9.jpg", "/photos/10.jpg", "/photos/11.jpg", "/photos/12.jpg"
           ].map((imgSrc, i) => (
             <motion.div
               key={i}
-              className="relative rounded-lg overflow-hidden bg-gradient-to-br from-rose-400/30 to-purple-400/30"
+              // Added 'hidden md:block' to some indices if you want to show fewer on mobile
+              className={`relative rounded-lg overflow-hidden bg-rose-900/20 ${i > 5 ? 'hidden md:block' : ''}`}
               animate={{
-                y: [0, -20, 0],
-                scale: [1, 1.05, 1],
+                y: [0, -15, 0],
               }}
               transition={{
-                duration: 6 + i * 0.5,
+                duration: 8 + i,
                 repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.3,
+                ease: "linear", // Linear is much lighter on mobile processors than easeInOut
               }}
+              style={{ transform: 'translateZ(0)' }} // Forces GPU acceleration
             >
               <img
                 src={imgSrc}
-                alt={`Memory ${i + 1}`}
-                className="w-full h-full object-cover"
+                alt=""
+                loading="lazy"
+                className="w-full h-full object-cover will-change-transform"
               />
             </motion.div>
           ))}
