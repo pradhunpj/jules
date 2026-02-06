@@ -86,10 +86,16 @@ export default function ValentinePage() {
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-950 via-purple-950 to-slate-950">
       {/* Animated Background Photo Grid */}
+      {/* Animated Background Photo Grid */}
       <div className="fixed inset-0 opacity-20">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
         <div className="grid grid-cols-3 md:grid-cols-4 gap-4 p-4 h-full">
-          {[...Array(12)].map((_, i) => (
+          {[
+            "/photos/1.jpg", "/photos/2.jpg", "/photos/3.jpg",
+            "/photos/4.jpg", "/photos/5.jpg", "/photos/6.jpg",
+            "/photos/7.jpg", "/photos/8.jpg", "/photos/9.jpg",
+            "/photos/10.jpg", "/photos/11.jpg", "/photos/12.jpg"
+          ].map((imgSrc, i) => (
             <motion.div
               key={i}
               className="relative rounded-lg overflow-hidden bg-gradient-to-br from-rose-400/30 to-purple-400/30"
@@ -104,265 +110,212 @@ export default function ValentinePage() {
                 delay: i * 0.3,
               }}
             >
-              {/* Placeholder for couple photos */}
-              <div className="w-full h-full flex items-center justify-center text-rose-300/50 text-xs p-2 text-center">
-                <img
-                  src="/photos/1.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/2.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/3.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/4.heic"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/5.heic"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/6.heic"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/7.heic"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/8.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/9.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/10.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/11.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                <img
-                  src="/photos/12.jpg"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <img
+                src={imgSrc}
+                alt={`Memory ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           ))}
         </div>
       </div>
+    </div>
 
-      {/* Music Toggle Button */}
-      {hasEntered && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1 }}
-          onClick={toggleMusic}
-          className="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-rose-500/20 backdrop-blur-md border border-rose-300/30 flex items-center justify-center text-rose-200 hover:bg-rose-500/30 transition-all shadow-lg"
-        >
-          {isMusicPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
-        </motion.button>
-      )}
+      {/* Music Toggle Button */ }
+  {
+    hasEntered && (
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1 }}
+        onClick={toggleMusic}
+        className="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-rose-500/20 backdrop-blur-md border border-rose-300/30 flex items-center justify-center text-rose-200 hover:bg-rose-500/30 transition-all shadow-lg"
+      >
+        {isMusicPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
+      </motion.button>
+    )
+  }
 
-      {/* Landing Screen */}
-      <AnimatePresence>
-        {!hasEntered && (
+  {/* Landing Screen */ }
+  <AnimatePresence>
+    {!hasEntered && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.8 }}
+        className="fixed inset-0 z-40 flex items-center justify-center p-4"
+      >
+        <div className="text-center space-y-8">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.8 }}
-            className="fixed inset-0 z-40 flex items-center justify-center p-4"
-          >
-            <div className="text-center space-y-8">
-              <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-              >
-                <Heart className="w-20 h-20 mx-auto text-rose-400 mb-6" />
-                <h1 className="font-serif text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-pink-300 to-purple-300 mb-4">
-                  Our Valentine Week
-                </h1>
-                <p className="text-xl md:text-2xl text-rose-200/80 font-light">
-                  A collection of moments, promises, and letters written just for you.
-                </p>
-              </motion.div>
-
-              <motion.button
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleEnter}
-                className="px-12 py-4 rounded-full bg-gradient-to-r from-rose-500/30 to-pink-500/30 backdrop-blur-md border-2 border-rose-300/50 text-rose-100 text-lg font-medium shadow-2xl hover:shadow-rose-500/50 transition-all"
-              >
-                Tap to Begin ❤️
-              </motion.button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Main Content */}
-      {hasEntered && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative z-20 min-h-screen flex flex-col items-center justify-center p-4 py-20"
-        >
-          <motion.h2
-            initial={{ y: -30, opacity: 0 }}
+            initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-3xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-rose-300 to-pink-300 mb-12"
+            transition={{ delay: 0.3, duration: 0.8 }}
           >
-            Choose Your Day ✨
-          </motion.h2>
+            <Heart className="w-20 h-20 mx-auto text-rose-400 mb-6" />
+            <h1 className="font-serif text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-pink-300 to-purple-300 mb-4">
+              Our Valentine Week
+            </h1>
+            <p className="text-xl md:text-2xl text-rose-200/80 font-light">
+              A collection of moments, promises, and letters written just for you.
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
-            {valentineDays.map((day, index) => (
-              <motion.button
-                key={day.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => openLetter(day)}
-                className={`relative p-8 rounded-2xl bg-gradient-to-br ${day.color} backdrop-blur-xl border border-rose-300/30 shadow-2xl hover:shadow-rose-500/30 transition-all group overflow-hidden`}
-              >
-                {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-rose-400/0 via-pink-400/0 to-purple-400/0 group-hover:from-rose-400/10 group-hover:via-pink-400/10 group-hover:to-purple-400/10 transition-all duration-500" />
-
-                <div className="relative z-10 text-center space-y-3">
-                  <div className="text-6xl mb-2">{day.emoji}</div>
-                  <h3 className="text-2xl font-bold text-rose-100">{day.name}</h3>
-                  <p className="text-rose-300/80 text-sm">{day.date}</p>
-                </div>
-
-                {/* Floating hearts */}
-                <motion.div
-                  animate={{ y: [-10, -30], opacity: [0, 1, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  className="absolute top-4 right-4 text-2xl"
-                >
-                  💕
-                </motion.div>
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
-      )}
-
-      {/* Letter Modal */}
-      <AnimatePresence>
-        {selectedDay && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
-            onClick={closeLetter}
+          <motion.button
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleEnter}
+            className="px-12 py-4 rounded-full bg-gradient-to-r from-rose-500/30 to-pink-500/30 backdrop-blur-md border-2 border-rose-300/50 text-rose-100 text-lg font-medium shadow-2xl hover:shadow-rose-500/50 transition-all"
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 50 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-gradient-to-br from-rose-950/90 via-purple-950/90 to-slate-950/90 backdrop-blur-2xl border border-rose-300/30 shadow-2xl"
+            Tap to Begin ❤️
+          </motion.button>
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+
+  {/* Main Content */ }
+  {
+    hasEntered && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="relative z-20 min-h-screen flex flex-col items-center justify-center p-4 py-20"
+      >
+        <motion.h2
+          initial={{ y: -30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-3xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-rose-300 to-pink-300 mb-12"
+        >
+          Choose Your Day ✨
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
+          {valentineDays.map((day, index) => (
+            <motion.button
+              key={day.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.6 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => openLetter(day)}
+              className={`relative p-8 rounded-2xl bg-gradient-to-br ${day.color} backdrop-blur-xl border border-rose-300/30 shadow-2xl hover:shadow-rose-500/30 transition-all group overflow-hidden`}
             >
-              {/* Close Button */}
-              <button
-                onClick={closeLetter}
-                className="sticky top-4 left-full ml-4 w-12 h-12 rounded-full bg-rose-500/20 backdrop-blur-md border border-rose-300/30 flex items-center justify-center text-rose-200 hover:bg-rose-500/30 transition-all z-10"
+              {/* Animated background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-rose-400/0 via-pink-400/0 to-purple-400/0 group-hover:from-rose-400/10 group-hover:via-pink-400/10 group-hover:to-purple-400/10 transition-all duration-500" />
+
+              <div className="relative z-10 text-center space-y-3">
+                <div className="text-6xl mb-2">{day.emoji}</div>
+                <h3 className="text-2xl font-bold text-rose-100">{day.name}</h3>
+                <p className="text-rose-300/80 text-sm">{day.date}</p>
+              </div>
+
+              {/* Floating hearts */}
+              <motion.div
+                animate={{ y: [-10, -30], opacity: [0, 1, 0] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                className="absolute top-4 right-4 text-2xl"
               >
-                <X size={24} />
-              </button>
+                💕
+              </motion.div>
+            </motion.button>
+          ))}
+        </div>
+      </motion.div>
+    )
+  }
 
-              {/* Letter Content */}
-              <div className="p-8 md:p-12 space-y-6">
-                {/* Header */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-center space-y-4"
-                >
-                  <div className="text-7xl">{selectedDay.emoji}</div>
-                  <h3 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-300 to-pink-300">
-                    {selectedDay.name}
-                  </h3>
-                  <p className="text-rose-300/60 text-lg">{selectedDay.date}</p>
-                </motion.div>
+  {/* Letter Modal */ }
+  <AnimatePresence>
+    {selectedDay && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+        onClick={closeLetter}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 50 }}
+          transition={{ type: "spring", duration: 0.5 }}
+          onClick={(e) => e.stopPropagation()}
+          className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-gradient-to-br from-rose-950/90 via-purple-950/90 to-slate-950/90 backdrop-blur-2xl border border-rose-300/30 shadow-2xl"
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeLetter}
+            className="sticky top-4 left-full ml-4 w-12 h-12 rounded-full bg-rose-500/20 backdrop-blur-md border border-rose-300/30 flex items-center justify-center text-rose-200 hover:bg-rose-500/30 transition-all z-10"
+          >
+            <X size={24} />
+          </button>
 
-                {/* Decorative Line */}
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="h-px bg-gradient-to-r from-transparent via-rose-300/50 to-transparent"
-                />
+          {/* Letter Content */}
+          <div className="p-8 md:p-12 space-y-6">
+            {/* Header */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-center space-y-4"
+            >
+              <div className="text-7xl">{selectedDay.emoji}</div>
+              <h3 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-300 to-pink-300">
+                {selectedDay.name}
+              </h3>
+              <p className="text-rose-300/60 text-lg">{selectedDay.date}</p>
+            </motion.div>
 
-                {/* Letter Text */}
-                <motion.div
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="relative"
-                >
-                  {/* Watermark Image Placeholder */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-rose-400/10 to-pink-400/10 opacity-20 flex items-center justify-center text-rose-300/30 text-sm">
-                    Watermark
-                    <br />
-                    Image Here
-                  </div>
+            {/* Decorative Line */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="h-px bg-gradient-to-r from-transparent via-rose-300/50 to-transparent"
+            />
 
-                  <div className="relative z-10 text-rose-100/90 text-lg md:text-xl leading-relaxed font-dancing whitespace-pre-wrap">
-                    {letterContent[selectedDay.id]}
-                  </div>
-                </motion.div>
+            {/* Letter Text */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="relative"
+            >
+              {/* Watermark Image Placeholder */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-rose-400/10 to-pink-400/10 opacity-20 flex items-center justify-center text-rose-300/30 text-sm">
+                Watermark
+                <br />
+                Image Here
+              </div>
 
-                {/* Bottom Decoration */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                  className="flex justify-center gap-4 text-3xl pt-8"
-                >
-                  <motion.span animate={{ rotate: [0, 15, 0] }} transition={{ duration: 2, repeat: Infinity }}>💕</motion.span>
-                  <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}>❤️</motion.span>
-                  <motion.span animate={{ rotate: [0, -15, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}>💕</motion.span>
-                </motion.div>
+              <div className="relative z-10 text-rose-100/90 text-lg md:text-xl leading-relaxed font-dancing whitespace-pre-wrap">
+                {letterContent[selectedDay.id]}
               </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+
+            {/* Bottom Decoration */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex justify-center gap-4 text-3xl pt-8"
+            >
+              <motion.span animate={{ rotate: [0, 15, 0] }} transition={{ duration: 2, repeat: Infinity }}>💕</motion.span>
+              <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}>❤️</motion.span>
+              <motion.span animate={{ rotate: [0, -15, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}>💕</motion.span>
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+    </div >
   )
 }
